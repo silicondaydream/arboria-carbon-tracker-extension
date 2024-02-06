@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "manifest_version": 2,
     "background": {
-      "scripts": [ "javascript/background.js" ]
+      "scripts": [ "functionality/background.js" ]
     },
     "browser_action": {
       "default_icon": "icons/icon-32x32.png",
@@ -18,6 +18,6 @@
     },
     "content_scripts": [{
       "matches": ["<all_urls>"],
-      "js": ["javascript/contentscript.js"]
+      "js": ["functionality/contentscript.js"]
     }]
   }
