@@ -1,6 +1,6 @@
 {
     "name": "Arboria Carbon Tracker",
-    "description": "Browsing emissions made simple! Track carbon emissions resulting from your daily web browsing. On average, each webpage you view emits about 1.76g of carbon or equivalent gases.",
+    "description": "Browsing emissions made simple! Track carbon emissions resulting from your daily web browsing.",
     "version": "0.1.0",
     "manifest_version": 2,
     "background": {
