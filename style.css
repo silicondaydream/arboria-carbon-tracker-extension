@@ -1,142 +1,144 @@
+/* Define root CSS custom properties (variables) for consistent theme colors and background */
 :root {
-	--primary-color: #366551;
-	--secondary-color: #3C8457;
-	--tertiary-color: #2a230f;
-	--background-color: #c4d8cb;
+	--primary-color: #366551; /* Dark green for primary elements */
+	--secondary-color: #3C8457; /* Slightly lighter green for secondary elements */
+	--tertiary-color: #2a230f; /* Dark brown for tertiary text or elements */
+	--background-color: #c4d8cb; /* Light green background color */
 }
 
+/* General body styling */
 body {
-	font-family: 'Arial', sans-serif;
-	width: 550px;
-	background-color: var(--background-color);
+	font-family: 'Arial', sans-serif; /* Default font for the body */
+	width: 550px; /* Fixed width for the body content */
+	background-color: var(--background-color); /* Background color using CSS variable */
 }
 
+/* Logo section styling */
 .logo {
-	padding: 10px 10px;
-	display: flex;
-	align-items: center;
-	justify-content: start;
+	padding: 10px 10px; /* Padding around the logo */
+	display: flex; /* Use flexbox for layout */
+	align-items: center; /* Vertically center logo items */
+	justify-content: start; /* Align logo items to the start of the container */
 }
 
 .logo-img {
-	height: 64px;
-	margin-right: 20px;
+	height: 64px; /* Fixed height for the logo image */
+	margin-right: 20px; /* Space between the logo image and the text */
 }
 
 .logo-text {
-	color: var(--secondary-color);
-	font-size: 32px;
-	font-weight: bolder;
+	color: var(--secondary-color); /* Color for the logo text */
+	font-size: 32px; /* Large font size for the logo text */
+	font-weight: bolder; /* Bold font weight for emphasis */
 }
 
+/* Sub-heading style */
 .sub-heading {
-	color: var(--tertiary-color);
-	font-size: 12px;
-	padding: 5px 10px;
+	color: var(--tertiary-color); /* Tertiary color for sub-heading text */
+	font-size: 12px; /* Smaller font size for sub-headings */
+	padding: 5px 10px; /* Padding around sub-headings */
 }
 
+/* Main content area styling */
 .main-content {
-	display: flex;
+	display: flex; /* Use flexbox for the layout */
 }
 
 .left-content {
-	flex: 45;
-	padding: 10px;
+	flex: 45; /* Flex basis of 45% for the left content area */
+	padding: 10px; /* Padding inside the left content area */
 }
 
 .today {
-	color: var(--secondary-color);
-	font-size: 16px;
-	font-weight: bold;
-	display: flex;
+	color: var(--secondary-color); /* Secondary color for the text */
+	font-size: 16px; /* Medium font size */
+	font-weight: bold; /* Bold font weight */
+	display: flex; /* Use flexbox for layout */
 }
 
 #today-carbon {
-	color: var(--primary-color);
-	margin-left: 16px;
+	color: var(--primary-color); /* Primary color for the carbon count */
+	margin-left: 16px; /* Left margin for spacing */
 }
 
+/* Chart styling */
 #chart {
-	width: 300px;
-	border-left: solid 1px var(--primary-color);
-	border-bottom: solid 1px var(--primary-color);
-	padding-bottom: none;
-	margin-bottom: none;
-	position: relative;
-	margin-top: 10px;
+	width: 300px; /* Fixed width for the chart */
+	border-left: solid 1px var(--primary-color); /* Left border with primary color */
+	border-bottom: solid 1px var(--primary-color); /* Bottom border with primary color */
+	position: relative; /* Positioning context for absolute positioned children */
+	margin-top: 10px; /* Top margin for spacing */
 }
 
 #chart-default {
-	position: absolute;
-	width: 100%;
-	text-align: center;
-	color: #949696;
-	top: 50%;
-	transform: translateY(-50%);
-	z-index: 100;
+	position: absolute; /* Absolute positioning within #chart */
+	width: 100%; /* Full width of the parent */
+	text-align: center; /* Center text horizontally */
+	color: #949696; /* Grey color for default chart text */
+	top: 50%; /* Position at the middle vertically */
+	transform: translateY(-50%); /* Offset by half its height to center vertically */
+	z-index: 100; /* Z-index for layering */
 }
 
 .chart-default-hidden {
-	display: none;
+	display: none; /* Hide element */
 }
 
 .chart-column {
-	width: 10px;
-	float: left;
+	width: 10px; /* Fixed width for chart columns */
+	float: left; /* Float columns to the left */
 }
 
 .chart-area {
-	position: relative;
-	padding-bottom: 0px;
-	margin-bottom: 0px;
-	border-left: solid 1px #404040;
+	position: relative; /* Relative positioning for positioning children */
+	border-left: solid 1px #404040; /* Left border for separation */
 }
 
 .chart-bar-wrap {
-	width: 10px;
-	position: absolute;
-	bottom: 0;
-	left: 0;
+	width: 10px; /* Fixed width */
+	position: absolute; /* Positioned absolutely within chart-area */
+	bottom: 0; /* Align to the bottom */
+	left: 0; /* Align to the left */
 }
 
 .chart-bar {
-	width: 8px;
-	position: absolute;
-	bottom: 0;
-	left: 4px;
-	background-color: var(--primary-color);
+	width: 8px; /* Fixed width for the bar */
+	position: absolute; /* Positioned absolutely within bar-wrap */
+	bottom: 0; /* Align to the bottom */
+	left: 4px; /* Center within the bar-wrap */
+	background-color: var(--primary-color); /* Background color using primary color */
 }
 
 .chart-bar.today {
-	background-color: var(--primary-color);
+	background-color: var(--primary-color); /* Ensure today's bar is highlighted */
 }
 
 .chart-caption {
-	color: var(--secondary-color);
-	font-weight: bold;
-	font-size: 14px;
-	margin-top: 15px;
+	color: var(--secondary-color); /* Secondary color for the caption */
+	font-weight: bold; /* Bold font weight */
+	font-size: 14px; /* Font size for the caption */
+	margin-top: 15px; /* Top margin for spacing */
 }
 
 .right-content {
-	flex: 55;
-	padding: 10px 30px;
+	flex: 55; /* Flex basis of 55% for the right content area */
+	padding: 10px 30px; /* Padding inside the right content area */
 }
 
 .forecast-title {
-	color: var(--secondary-color);
-	font-size: 16px;
-	font-weight: bold;
+	color: var(--secondary-color); /* Secondary color for the forecast title */
+	font-size: 16px; /* Medium font size */
+	font-weight: bold; /* Bold font weight for emphasis */
 }
 
 #forecast-count {
-	color: var(--primary-color);
-	font-size: 28px;
-	font-weight: bold;
+	color: var(--primary-color); /* Primary color for the forecast count */
+	font-size: 28px; /* Large font size for visibility */
+	font-weight: bold; /* Bold font weight for emphasis */
 }
 
 .forecast-equivalent {
-	color: var(--secondary-color);
-	font-size: 14px;
-	padding: 10px 0;
+	color: var(--secondary-color); /* Secondary color for equivalent actions */
+	font-size: 14px; /* Font size for details */
+	padding: 10px 0; /* Vertical padding for spacing */
 }
