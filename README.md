@@ -5,12 +5,12 @@ The environmental impact of our online activities is considerable, with each web
 
 `Arboria` is a Chrome Browser extension, designed for monitoring and calculating the CO2e emissions from your daily browsing, offering a real-time audit of your digital carbon footprint.
 
-![UI](ui.png)
+![Screenshot](screenshot-demo.png)
 
 
 
 ## Features
-<img src="features.png" width="500">
+<img src="screenshot-feature-demo.png" width="500">
 
 - Real-time CO2e emissions data from daily web browsing.
 - 30-day visual of your browsing emissions data.
