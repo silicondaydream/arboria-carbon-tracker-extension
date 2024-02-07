@@ -1,7 +1,7 @@
 ![Logo](icons/icon-128x128.png)
 # Arboria Carbon Tracker
 
-The environmental impact of our online activities is considerable, with each web page visited resulting in 0.80 grams of carbon emissions. This accumulation underscores the significant ecological footprint of digital consumption.
+The environmental impact of our online activities is considerable, with each web page visited resulting in 0.80 grams of carbon emissions on average<sup>[1](#main-metric)</sup>. This accumulation underscores the significant ecological footprint of digital consumption.
 
 `Arboria` is a Chrome Browser extension, designed for monitoring and calculating the CO2e emissions from your daily browsing, offering a real-time audit of your digital carbon footprint.
 
@@ -18,7 +18,9 @@ The environmental impact of our online activities is considerable, with each web
 
 
 
-**carbonPerPage metric is based on data sourced from [HTTP Archive](https://httparchive.org/reports/page-weight#bytesTotal) by Website Carbon Calculator in July 2023**
+## Main Metric
+
+carbonPerPage metric is based on data sourced from [HTTP Archive](https://httparchive.org/reports/page-weight#bytesTotal) by Website Carbon Calculator in July 2023
 
 
 ## The formulas for calculating digital emissions:
