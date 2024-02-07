@@ -17,13 +17,19 @@
 		<div class="main-content">
 
 			<div class="left-content">
-				<div class="today">
-					<div>Today's CO<sub>2</sub>e:</div>
-					<span id="today-carbon"></span>
-				</div>
-				<div class="chart-caption">Data for the past 30 days:</div>
-				<div id="chart">
-					<div id="chart-default"></div>
+				<div class="">
+					<div class="forecast-equivalent" id="flights">Real-time CO<sub>2</sub>e emissions 
+						<br/>
+						data from daily web activity.
+						<br/>
+						<br/>
+						"The internet consumes 
+						<br/>
+						roughly <strong>416.2TWh</strong> of
+						<br/>
+						electricity per year"
+					</div>
+					<div class="forecast-equivalent" id="trees"></div>
 				</div>
 			</div>
 
@@ -32,9 +38,15 @@
 					<div class="forecast-title">Annual Estimate <br/>
 						(CO<sub>2</sub>e / year)</div>
 					<div id="forecast-count">Not enough data...</div>
-					<div class="forecast-equivalent" id="flights">Website browsing emissions extension.
-					</div>
-					<div class="forecast-equivalent" id="trees"></div>
+				</div>
+				<div class="forecast">
+					<div class="forecast-title">Real-time Estimate <br/>
+						 (CO<sub>2</sub>e / today)</div>
+						<span id="today-carbon"></span>
+				</div>
+				<div class="chart-caption">Data for the past 30 days:</div>
+				<div id="chart">
+					<div id="chart-default"></div>
 				</div>
 			</div>
 

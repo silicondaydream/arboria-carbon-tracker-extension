@@ -45,20 +45,23 @@ body {
 }
 
 .left-content {
-	flex: 45; /* Flex basis of 45% for the left content area */
-	padding: 10px; /* Padding inside the left content area */
+	flex: 50; /* Flex basis of 45% for the left content area */
+	margin-top: 30px;
+	padding: 20px 16px; /* Padding inside the left content area */
 }
 
 .today {
 	color: var(--secondary-color); /* Secondary color for the text */
 	font-size: 16px; /* Medium font size */
 	font-weight: bold; /* Bold font weight */
-	display: flex; /* Use flexbox for layout */
+	display: block; /* Use flexbox for layout */
 }
 
 #today-carbon {
 	color: var(--primary-color); /* Primary color for the carbon count */
-	margin-left: 16px; /* Left margin for spacing */
+	margin-left: 6px; /* Left margin for spacing */
+	font-size: 28px;
+	font-weight: bold; /* Bold font weight for emphasis */
 }
 
 /* Chart styling */
@@ -85,7 +88,7 @@ body {
 }
 
 .chart-column {
-	width: 8px; /* Fixed width for chart columns */
+	width: 10px; /* Fixed width for chart columns */
 	float: left; /* Float columns to the left */
 }
 
@@ -95,14 +98,14 @@ body {
 }
 
 .chart-bar-wrap {
-	width: 8px; /* Fixed width */
+	width: 10px; /* Fixed width */
 	position: absolute; /* Positioned absolutely within chart-area */
 	bottom: 0; /* Align to the bottom */
 	left: 0; /* Align to the left */
 }
 
 .chart-bar {
-	width: 6px; /* Fixed width for the bar */
+	width: 8px; /* Fixed width for the bar */
 	position: absolute; /* Positioned absolutely within bar-wrap */
 	bottom: 0; /* Align to the bottom */
 	left: 4px; /* Center within the bar-wrap */
@@ -121,10 +124,15 @@ body {
 }
 
 .right-content {
-	flex: 55; /* Flex basis of 55% for the right content area */
-	padding: 10px 30px; /* Padding inside the right content area */
+	flex: 50; /* Flex basis of 55% for the right content area */
+	padding: 10px 10px; /* Padding inside the right content area */
 }
 
+.forecast {
+	display: inline-table;
+	padding-right: 10px;
+	text-align: center;
+}
 .forecast-title {
 	color: var(--secondary-color); /* Secondary color for the forecast title */
 	font-size: 16px; /* Medium font size */
@@ -141,4 +149,6 @@ body {
 	color: var(--secondary-color); /* Secondary color for equivalent actions */
 	font-size: 14px; /* Font size for details */
 	padding: 10px 0; /* Vertical padding for spacing */
+	font-style: italic;
+	text-align: center;
 }
