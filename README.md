@@ -1,31 +1,32 @@
 ![Logo](icons/icon-128x128.png)
 # Arboria Carbon Tracker
 
-With every web page generating 1.76g of carbon emissions, the cumulative effect of our online activities becomes a significant environmental concern.
+The environmental impact of our online activities is considerable, with each web page visited resulting in 0.80 grams of carbon emissions. This accumulation underscores the significant ecological footprint of digital consumption.
 
-`Arboria` is a Chrome Browser extension, designed for tracking and calculating the CO2e emissions from your daily browsing, offering a real-time audit of your digital carbon footprint.
+`Arboria` is a Chrome Browser extension, designed for monitoring and calculating the CO2e emissions from your daily browsing, offering a real-time audit of your digital carbon footprint.
 
 ![UI](ui.png)
-
-
-## The internet shouldn't cost the earth.
-
-The inspiration for this project lies in a realization that the Internet's carbon footprint rivals that of the global aviation industry. 
-Data centers, transmission networks, and the billions of devices we use are steadily guzzling electricity, primarily sourced from fossil fuels. 
-
-With data on energy consumption by websites, users can more informed decisions by understanding the real weight of their online activities in carbon emissions 
-and be part of a solution that aims for a greener internet.
 
 
 
 ## Features
 <img src="features.png" width="500">
 
-1. Tracks ⏱️ real-time CO2e emissions from daily web browsing.
-2. Displays a 30-day view 📊 of your browsing emissions.
-3. Offers an annual CO2e emission forecast 🌧️ using average carbon emissions data.
-4. Compares annual emissions to an equivalent number of flights 🛫.
-5. Suggest the number of trees 🌴 to plant to offset emissions.
+- Real-time CO2e emissions data from daily web browsing.
+- 30-day visual of your browsing emissions data.
+- Annual CO2e emission forecast.
+
+
+
+**carbonPerPage metric is based on data sourced from [HTTP Archive](https://httparchive.org/reports/page-weight#bytesTotal) by Website Carbon Calculator in July 2023**
+
+
+## The formulas for calculating digital emissions:
+
+Energy per visit (E), where E = Data transfer per visit (new visitors) in GB x 0.81 kWh/GB x 0.75 + Data transfer per visit (returning visitors) in GB x 0.81 kWh/GB x 0.25 x 0.02
+Emissions per visit in grams of CO2 (C) where C = E x 442g/kWh
+
+Full methodology @ [Sustainable Web Design](https://sustainablewebdesign.org/calculating-digital-emissions/).
 
 
 ## Usage
@@ -55,7 +56,7 @@ and be part of a solution that aims for a greener internet.
    
    `treesNeeded = annualEmission / trees`
 
-   The `sum` variable aggregates the total carbon for the `days` counted, and days keep track of the number of days with more than zero emissions. 
+   The `sum` variable aggregates the total carbon for the `days` counted, and days keep track of the number of days with more than zero emissions.
 
 
 ## Future Updates 
