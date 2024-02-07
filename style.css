@@ -85,7 +85,7 @@ body {
 }
 
 .chart-column {
-	width: 10px; /* Fixed width for chart columns */
+	width: 8px; /* Fixed width for chart columns */
 	float: left; /* Float columns to the left */
 }
 
@@ -95,14 +95,14 @@ body {
 }
 
 .chart-bar-wrap {
-	width: 10px; /* Fixed width */
+	width: 8px; /* Fixed width */
 	position: absolute; /* Positioned absolutely within chart-area */
 	bottom: 0; /* Align to the bottom */
 	left: 0; /* Align to the left */
 }
 
 .chart-bar {
-	width: 8px; /* Fixed width for the bar */
+	width: 6px; /* Fixed width for the bar */
 	position: absolute; /* Positioned absolutely within bar-wrap */
 	bottom: 0; /* Align to the bottom */
 	left: 4px; /* Center within the bar-wrap */

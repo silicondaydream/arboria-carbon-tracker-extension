@@ -2,7 +2,7 @@
     "name": "Arboria Carbon Tracker",
     "description": "Browsing emissions made simple! Track carbon emissions resulting from your daily web browsing.",
     "version": "0.1.0",
-    "manifest_version": 3,
+    "manifest_version": 2,
     "background": {
       "scripts": [ "functionality/background.js" ]
     },
