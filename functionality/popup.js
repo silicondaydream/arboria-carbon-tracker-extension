@@ -1,6 +1,6 @@
 // Define background page variable and average carbon footprint per page view
 let bg;
-let carbonPerPage = 1.76;	// Average carbon per page view in grams
+let carbonPerPage = 0.80;	// Average carbon per page view in grams 0.80g
 
 // Fetch the currently selected tab and then initialize the background page and render the page content
 chrome.tabs.getSelected(null, function (tab) {
