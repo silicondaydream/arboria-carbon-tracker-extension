@@ -3,55 +3,86 @@
 
 <head>
 	<meta charset="utf-8" />
+	<script src="functionality/constants.js" type="text/javascript"></script>
 	<script src="functionality/popup.js" type="text/javascript"></script>
 	<link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 	<div class="body">
-		<div class="logo">
-			<img class="logo-img" src="./icons/icon-128x128.png">
-			<div class="logo-text">Arboria Carbon Tracker</div>
+		<div class="top-bar">
+			<div class="title-group">
+				<img class="logo-img" src="./icons/icon-128x128.png" alt="Arboria logo">
+				<div class="logo-text">Arboria Carbon Tracker</div>
+			</div>
+			<div class="top-actions">
+				<div class="toggle-row">
+					<label class="toggle" data-tooltip="Toggle tracking">
+						<input type="checkbox" id="tracking-toggle" aria-label="Toggle tracking" />
+						<span class="toggle-pill"></span>
+					</label>
+					<button id="open-settings" class="icon-button" aria-label="Settings">
+						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+							<path d="M19.14 12.94c.04-.3.06-.62.06-.94s-.02-.64-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.03 7.03 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.58.22-1.12.52-1.62.94l-2.39-.96a.5 0 0 0-.6.22L2.81 7.84a.5 0 0 0 .12.64l2.03 1.58c-.04.3-.06.62-.06.94s.02.64.06.94l-2.03 1.58a.5 0 0 0-.12.64l1.92 3.32c.14.24.44.34.7.22l2.39-.96c.5.42 1.04.74 1.62.94l.36 2.54c.04.24.25.42.5.42h3.84c.25 0 .46-.18.5-.42l.36-2.54c.58-.22 1.12-.52 1.62-.94l2.39.96c.26.12.56.02.7-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58ZM12 15.5A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5Z"></path>
+						</svg>
+					</button>
+				</div>
+			</div>
 		</div>
 		<hr>
-		<div class="main-content">
 
-			<div class="left-content">
-				<div class="">
-					<div class="forecast-equivalent" id="flights">Real-time CO<sub>2</sub>e emissions 
-						<br/>
-						data from daily web activity.
-						<br/>
-						<br/>
-						"The internet consumes 
-						<br/>
-						roughly <strong>416.2TWh</strong> of
-						<br/>
-						electricity per year"
-					</div>
-					<div class="forecast-equivalent" id="trees"></div>
-				</div>
+		<div class="summary">
+			<div class="summary-card">
+				<div class="summary-label">Today (CO<sub>2</sub>e)</div>
+				<div id="today-carbon" class="summary-value">--</div>
 			</div>
-
-			<div class="right-content">
-				<div class="forecast">
-					<div class="forecast-title">Annual Estimate <br/>
-						(CO<sub>2</sub>e / year)</div>
-					<div id="forecast-count">Not enough data...</div>
-				</div>
-				<div class="forecast">
-					<div class="forecast-title">Real-time Estimate <br/>
-						 (CO<sub>2</sub>e / today)</div>
-						<span id="today-carbon"></span>
-				</div>
-				<div class="chart-caption">Data for the past 30 days:</div>
-				<div id="chart">
-					<div id="chart-default"></div>
-				</div>
+			<div class="summary-card">
+				<div class="summary-label">Activity + Data</div>
+				<div class="summary-metric"><span id="today-time">--</span> active</div>
+				<div class="summary-metric"><span id="today-data">--</span> transfer</div>
 			</div>
-
 		</div>
 
+		<div class="main-content">
+			<div class="forecast">
+				<div class="forecast-title">Annual Estimate</div>
+				<div id="forecast-count">Not enough data...</div>
+			</div>
+			<div class="chart-caption">Data for the past 30 days:</div>
+			<div class="chart-row">
+				<div id="chart">
+					<div id="chart-default">Not enough data yet...</div>
+				</div>
+				<button id="export-data" class="export-button">
+					<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+						<path d="M12 3a1 1 0 0 1 1 1v8.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4.01 4a1 1 0 0 1-1.38 0l-4.01-4a1 1 0 1 1 1.4-1.42l2.3 2.3V4a1 1 0 0 1 1-1Z"></path>
+						<path d="M5 14a1 1 0 0 1 1 1v2h12v-2a1 1 0 1 1 2 0v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1Z"></path>
+					</svg>
+					Export
+				</button>
+			</div>
+		</div>
+
+		<div class="section">
+			<div class="section-title">Top domains (all time)</div>
+			<div id="domain-list" class="domain-list"></div>
+		</div>
+
+		<div class="section">
+			<div class="section-title">Insights</div>
+			<ul id="insights-list" class="insights-list"></ul>
+		</div>
+
+		<div class="methodology">
+			<div>Local-only tracking.</div>
+			<div>
+				Sources:
+				<a href="https://sustainablewebdesign.org/calculating-digital-emissions/" target="_blank" rel="noreferrer">Sustainable Web Design</a>,
+				<a href="https://httparchive.org/reports/page-weight#bytesTotal" target="_blank" rel="noreferrer">HTTP Archive</a>.
+			</div>
+		</div>
+
+		<div id="toggle-toast" class="toast" role="status" aria-live="polite"></div>
 	</div>
 </body>
 

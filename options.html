@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Arboria Carbon Tracker Settings</title>
+	<script src="functionality/constants.js" type="text/javascript"></script>
+	<script src="functionality/options.js" type="text/javascript"></script>
+	<link href="options.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div class="page">
+		<header class="header">
+			<img class="logo-img" src="./icons/icon-128x128.png" alt="Arboria logo">
+			<div>
+				<h1>Arboria Settings</h1>
+				<p>Customize how your browsing emissions are estimated.</p>
+			</div>
+		</header>
+
+		<section class="card">
+			<h2>Tracking</h2>
+			<label class="field">
+				<input type="checkbox" id="tracking-enabled" />
+				<span>Enable tracking</span>
+			</label>
+			<label class="field">
+				<input type="checkbox" id="suggestions-enabled" />
+				<span>Show insights and suggestions</span>
+			</label>
+			<label class="field">
+				<span>Retention days</span>
+				<input type="number" id="retention-days" min="7" max="365" step="1" />
+			</label>
+		</section>
+
+		<section class="card">
+			<h2>Device profile</h2>
+			<label class="field">
+				<span>Device type</span>
+				<select id="device-profile">
+					<option value="laptop">Laptop (30W)</option>
+					<option value="desktop">Desktop (75W)</option>
+					<option value="mobile">Mobile (5W)</option>
+					<option value="custom">Custom</option>
+				</select>
+			</label>
+			<label class="field" id="custom-power-field">
+				<span>Custom device power (W)</span>
+				<input type="number" id="custom-device-power" min="1" max="500" step="1" />
+			</label>
+		</section>
+
+		<section class="card">
+			<h2>Estimation model</h2>
+			<label class="field">
+				<span>Energy intensity (kWh/GB)</span>
+				<input type="number" id="energy-per-gb" min="0.1" max="5" step="0.01" />
+			</label>
+			<label class="field">
+				<span>Grid intensity (gCO2e/kWh)</span>
+				<input type="number" id="grid-intensity" min="50" max="1200" step="1" />
+			</label>
+			<label class="field">
+				<span>Cache factor</span>
+				<input type="number" id="cache-factor" min="0.1" max="1" step="0.01" />
+			</label>
+			<label class="field">
+				<span>Fallback per page (gCO2e)</span>
+				<input type="number" id="fallback-grams" min="0" max="10" step="0.01" />
+			</label>
+			<label class="field">
+				<span>Media power multiplier</span>
+				<input type="number" id="media-multiplier" min="0" max="1" step="0.05" />
+			</label>
+			<label class="field">
+				<span>Data transfer multiplier</span>
+				<input type="number" id="data-multiplier" min="0" max="0.5" step="0.05" />
+			</label>
+		</section>
+
+		<section class="card">
+			<h2>Domain intensity overrides</h2>
+			<div class="domain-editor">
+				<input type="text" id="domain-input" placeholder="example.com" />
+				<input type="number" id="domain-multiplier" min="0.1" max="3" step="0.1" placeholder="1.0" />
+				<button id="add-domain">Add / Update</button>
+			</div>
+			<div id="domain-overrides" class="domain-list"></div>
+		</section>
+
+		<section class="card">
+			<h2>Data controls</h2>
+			<div class="button-row">
+				<button id="reset-stats">Reset tracked data</button>
+				<button id="reset-defaults">Reset defaults</button>
+			</div>
+		</section>
+	</div>
+</body>
+
+</html>

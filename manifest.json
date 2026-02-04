@@ -1,23 +1,32 @@
 {
-    "name": "Arboria Carbon Tracker",
-    "description": "Browsing emissions made simple! Track carbon emissions resulting from your daily web browsing.",
-    "version": "0.1.0",
-    "manifest_version": 2,
-    "background": {
-      "scripts": [ "functionality/background.js" ]
-    },
-    "browser_action": {
-      "default_icon": "icons/icon-32x32.png",
-      "default_popup": "popup.html",
-      "default_title": "Arboria Carbon Tracker"
-    },
-    "icons": {
-      "16": "icons/icon-16x16.png",
-      "32": "icons/icon-32x32.png",
-      "128": "icons/icon-128x128.png"
-    },
-    "content_scripts": [{
+  "name": "Arboria Carbon Tracker",
+  "description": "Browsing emissions made simple! Track carbon emissions resulting from your daily web browsing.",
+  "version": "0.2.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "functionality/background.js"
+  },
+  "action": {
+    "default_icon": "icons/icon-32x32.png",
+    "default_popup": "popup.html",
+    "default_title": "Arboria Carbon Tracker"
+  },
+  "icons": {
+    "16": "icons/icon-16x16.png",
+    "32": "icons/icon-32x32.png",
+    "128": "icons/icon-128x128.png"
+  },
+  "permissions": ["storage", "webRequest"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
       "matches": ["<all_urls>"],
-      "js": ["functionality/contentscript.js"]
-    }]
+      "js": ["functionality/constants.js", "functionality/contentscript.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
   }
+}

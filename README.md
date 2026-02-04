@@ -3,7 +3,7 @@
 
 The environmental impact of our online activities is considerable, with each web page visited resulting in 0.80 grams of carbon emissions on average<sup>[1](#main-metric)</sup>. This accumulation underscores the significant ecological footprint of digital consumption.
 
-`Arboria` is a Chrome Browser extension, designed for monitoring and calculating the CO2e emissions from your daily browsing, offering a real-time audit of your digital carbon footprint.
+`Arboria` is a Chrome Browser extension, designed for monitoring and calculating the CO2e emissions from your daily browsing, offering a real-time audit of your digital carbon footprint. All tracking is local-only and stays on your device.
 
 ![Screenshot](screenshot-demo.png)
 
@@ -15,20 +15,31 @@ The environmental impact of our online activities is considerable, with each web
 - Real-time CO2e emissions data from daily web browsing.
 - 30-day visual of your browsing emissions data.
 - Annual CO2e emission forecast.
+- Data-transfer, time-on-page, and media-intensity signals.
+- Network response header sampling when available (content-length).
+- Per-domain aggregation and insights.
+- Local-only insights engine with plain-language suggestions.
+- Customizable estimation settings and exportable data.
 
 
 
-## Main Metric
+## Fallback Metric
 
-carbonPerPage metric is based on data sourced from [HTTP Archive](https://httparchive.org/reports/page-weight#bytesTotal) by Website Carbon Calculator in July 2023
+When transfer size isn't available, Arboria falls back to an average per-page estimate based on data sourced from [HTTP Archive](https://httparchive.org/reports/page-weight#bytesTotal) by Website Carbon Calculator in July 2023.
 
 
 ## The formulas for calculating digital emissions:
 
-Energy per visit (E), where E = Data transfer per visit (new visitors) in GB x 0.81 kWh/GB x 0.75 + Data transfer per visit (returning visitors) in GB x 0.81 kWh/GB x 0.25 x 0.02
-Emissions per visit in grams of CO2 (C) where C = E x 442g/kWh
+Energy per visit (E), where E = Data transfer per visit in GB x 0.81 kWh/GB x cache factor  
+Emissions per visit in grams of CO2 (C) where C = E x 442g/kWh  
+Device energy is estimated from active time using a configurable device power draw.
 
 Full methodology @ [Sustainable Web Design](https://sustainablewebdesign.org/calculating-digital-emissions/).
+
+## Privacy
+
+- Local-only storage with no external tracking or data sharing.
+- Optional tracking toggle and data reset controls.
 
 
 ## Usage
@@ -63,5 +74,4 @@ Full methodology @ [Sustainable Web Design](https://sustainablewebdesign.org/cal
 
 ## Future Updates 
 
-1. Migrate from **Manifest V2 to Manifest V3.**
-
+1. Expand domain-level insights and optional datasets for greener hosting signals.

@@ -4,32 +4,41 @@
 	--secondary-color: #3C8457; /* Slightly lighter green for secondary elements */
 	--tertiary-color: #2a230f; /* Dark brown for tertiary text or elements */
 	--background-color: #c4d8cb; /* Light green background color */
+	--panel-bg: rgba(255, 255, 255, 0.5);
 }
 
 /* General body styling */
 body {
-	font-family: 'Arial', sans-serif; /* Default font for the body */
-	width: 550px; /* Fixed width for the body content */
+	font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, 'Georgia', serif; /* Earthy serif */
+	width: 440px; /* Slightly wider for title fit */
 	background-color: var(--background-color); /* Background color using CSS variable */
 }
 
-/* Logo section styling */
-.logo {
-	padding: 10px 10px; /* Padding around the logo */
-	display: flex; /* Use flexbox for layout */
-	align-items: center; /* Vertically center logo items */
-	justify-content: start; /* Align logo items to the start of the container */
+/* Top bar */
+.top-bar {
+	padding: 8px 10px 2px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+}
+
+.title-group {
+	display: flex;
+	align-items: center;
+	gap: 12px;
 }
 
 .logo-img {
-	height: 64px; /* Fixed height for the logo image */
-	margin-right: 20px; /* Space between the logo image and the text */
+	height: 32px;
+	width: 32px;
 }
 
 .logo-text {
 	color: var(--secondary-color); /* Color for the logo text */
-	font-size: 32px; /* Large font size for the logo text */
+	font-size: 18px;
 	font-weight: bolder; /* Bold font weight for emphasis */
+	letter-spacing: 0.2px;
 }
 
 /* Sub-heading style */
@@ -42,6 +51,9 @@ body {
 /* Main content area styling */
 .main-content {
 	display: flex; /* Use flexbox for the layout */
+	flex-direction: column;
+	gap: 10px;
+	padding: 0 10px;
 }
 
 .left-content {
@@ -57,16 +69,55 @@ body {
 	display: block; /* Use flexbox for layout */
 }
 
-#today-carbon {
-	color: var(--primary-color); /* Primary color for the carbon count */
-	margin-left: 6px; /* Left margin for spacing */
-	font-size: 28px;
-	font-weight: bold; /* Bold font weight for emphasis */
+
+.summary {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 10px;
+	padding: 6px 10px 16px;
+}
+
+.summary-card {
+	background: var(--panel-bg);
+	border-radius: 10px;
+	padding: 10px 12px;
+	flex: 1;
+	text-align: center;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.summary-label {
+	color: var(--secondary-color);
+	font-weight: bold;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.6px;
+	font-family: 'Arial', sans-serif;
+}
+
+.summary-value {
+	color: var(--primary-color);
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: 6px;
+	display: block;
+}
+
+.summary-metric {
+	color: var(--tertiary-color);
+	font-size: 12px;
+	margin-top: 4px;
+	font-family: 'Arial', sans-serif;
+}
+
+.summary-metric span {
+	color: var(--primary-color);
+	font-weight: bold;
 }
 
 /* Chart styling */
 #chart {
-	width: 300px; /* Fixed width for the chart */
+	width: 260px; /* Fixed width for the chart */
 	border-left: solid 1px var(--primary-color); /* Left border with primary color */
 	border-bottom: solid 1px var(--primary-color); /* Bottom border with primary color */
 	position: relative; /* Positioning context for absolute positioned children */
@@ -88,7 +139,7 @@ body {
 }
 
 .chart-column {
-	width: 10px; /* Fixed width for chart columns */
+	width: 8px; /* Fixed width for chart columns */
 	float: left; /* Float columns to the left */
 }
 
@@ -98,17 +149,17 @@ body {
 }
 
 .chart-bar-wrap {
-	width: 10px; /* Fixed width */
+	width: 8px; /* Fixed width */
 	position: absolute; /* Positioned absolutely within chart-area */
 	bottom: 0; /* Align to the bottom */
 	left: 0; /* Align to the left */
 }
 
 .chart-bar {
-	width: 8px; /* Fixed width for the bar */
+	width: 6px; /* Fixed width for the bar */
 	position: absolute; /* Positioned absolutely within bar-wrap */
 	bottom: 0; /* Align to the bottom */
-	left: 4px; /* Center within the bar-wrap */
+	left: 1px; /* Center within the bar-wrap */
 	background-color: var(--primary-color); /* Background color using primary color */
 }
 
@@ -120,7 +171,14 @@ body {
 	color: var(--secondary-color); /* Secondary color for the caption */
 	font-weight: bold; /* Bold font weight */
 	font-size: 14px; /* Font size for the caption */
-	margin-top: 15px; /* Top margin for spacing */
+}
+
+.chart-row {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: 10px;
 }
 
 .right-content {
@@ -129,9 +187,9 @@ body {
 }
 
 .forecast {
-	display: inline-table;
+	display: inline-block;
 	padding-right: 10px;
-	text-align: center;
+	text-align: left;
 }
 .forecast-title {
 	color: var(--secondary-color); /* Secondary color for the forecast title */
@@ -151,4 +209,255 @@ body {
 	padding: 10px 0; /* Vertical padding for spacing */
 	font-style: italic;
 	text-align: center;
+}
+
+.methodology {
+	color: var(--tertiary-color);
+	font-size: 12px;
+	padding: 12px 12px 6px;
+	text-align: center;
+	margin: 12px 10px 10px;
+}
+
+.methodology a {
+	color: var(--primary-color);
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.methodology a:hover {
+	color: var(--secondary-color);
+}
+
+.section {
+	background: var(--panel-bg);
+	border-radius: 12px;
+	margin: 14px 10px 0;
+	padding: 12px 14px;
+}
+
+.section-title {
+	color: var(--secondary-color);
+	font-weight: bold;
+	font-size: 14px;
+	margin-bottom: 8px;
+}
+
+.domain-list {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.domain-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 13px;
+	color: var(--tertiary-color);
+}
+
+.domain-name {
+	max-width: 70%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.domain-value {
+	color: var(--primary-color);
+	font-weight: bold;
+}
+
+.insights-list {
+	margin: 0;
+	padding-left: 18px;
+	color: var(--tertiary-color);
+	font-size: 13px;
+}
+
+.toggle {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--secondary-color);
+	font-weight: bold;
+	font-size: 13px;
+	position: relative;
+	cursor: pointer;
+}
+
+.top-actions {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 8px;
+}
+
+.toggle-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.action-buttons {
+	display: flex;
+	gap: 8px;
+}
+
+.action-buttons button,
+.export-button {
+	background: var(--primary-color);
+	border: none;
+	border-radius: 8px;
+	color: #fff;
+	padding: 6px 12px;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: 'Arial', sans-serif;
+}
+
+.action-buttons .icon-button {
+	background: transparent;
+	padding: 0;
+}
+
+.action-buttons button:hover,
+.export-button:hover {
+	background: var(--secondary-color);
+}
+
+.icon-button {
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+	border: none;
+}
+
+.icon-button svg {
+	width: 22px;
+	height: 22px;
+	fill: var(--secondary-color);
+	display: block;
+}
+
+.action-buttons .icon-button:hover {
+	background: transparent;
+}
+
+.export-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.export-button svg {
+	width: 16px;
+	height: 16px;
+	fill: #fff;
+}
+
+.chart-row .export-button {
+	padding: 4px 10px;
+	font-size: 11px;
+	margin-bottom: 2px;
+}
+
+.toggle[data-tooltip]::after {
+	content: attr(data-tooltip);
+	position: absolute;
+	right: 0;
+	top: calc(100% + 6px);
+	background: rgba(42, 35, 15, 0.9);
+	color: #fff;
+	font-size: 11px;
+	padding: 4px 8px;
+	border-radius: 6px;
+	white-space: nowrap;
+	opacity: 0;
+	transform: translateY(-4px);
+	transition: opacity 0.2s ease, transform 0.2s ease;
+	pointer-events: none;
+	z-index: 10;
+}
+
+.toggle[data-tooltip]:hover::after {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.toggle:hover .toggle-pill {
+	background: rgba(54, 101, 81, 0.55);
+}
+
+.toast {
+	position: fixed;
+	left: 50%;
+	bottom: 10px;
+	transform: translateX(-50%) translateY(8px);
+	background: rgba(54, 101, 81, 0.95);
+	color: #fff;
+	font-size: 12px;
+	padding: 6px 12px;
+	border-radius: 999px;
+	opacity: 0;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+	pointer-events: none;
+	z-index: 20;
+	font-family: 'Arial', sans-serif;
+}
+
+.toast.show {
+	opacity: 1;
+	transform: translateX(-50%) translateY(0);
+}
+
+.toggle-pill {
+	position: relative;
+	width: 34px;
+	height: 16px;
+	background: rgba(54, 101, 81, 0.35);
+	border-radius: 999px;
+	transition: background 0.2s ease;
+}
+
+.toggle-pill::after {
+	content: "";
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 12px;
+	height: 12px;
+	background: #fff;
+	border-radius: 50%;
+	transition: transform 0.2s ease;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toggle input {
+	display: none;
+}
+
+.toggle input:checked + .toggle-pill {
+	background: var(--primary-color);
+}
+
+.toggle input:checked + .toggle-pill::after {
+	transform: translateX(18px);
+}
+
+.toggle-label {
+	font-family: 'Arial', sans-serif;
+	font-size: 12px;
+	color: var(--secondary-color);
+}
+
+.muted {
+	color: #6a6d6d;
+	font-size: 12px;
 }
