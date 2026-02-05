@@ -11,6 +11,7 @@ const DEFAULT_SETTINGS = Object.freeze({
   dataTransferMultiplier: 0.15,
   recentPagesLimit: 50,
   suggestionsEnabled: true,
+  showGraph: false,
   domainIntensity: {}
 });
 

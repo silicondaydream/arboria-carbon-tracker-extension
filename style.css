@@ -36,7 +36,7 @@ body {
 
 .logo-text {
 	color: var(--secondary-color); /* Color for the logo text */
-	font-size: 18px;
+	font-size: 19px;
 	font-weight: bolder; /* Bold font weight for emphasis */
 	letter-spacing: 0.2px;
 }
@@ -74,7 +74,12 @@ body {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 10px;
-	padding: 6px 10px 16px;
+	padding: 4px 10px 12px;
+}
+
+.annual-row {
+	padding: 4px 10px 0;
+	margin-bottom: 4px;
 }
 
 .summary-card {
@@ -173,12 +178,20 @@ body {
 	font-size: 14px; /* Font size for the caption */
 }
 
+.chart-caption.is-hidden {
+	display: none;
+}
+
 .chart-row {
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-between;
 	gap: 10px;
 	margin-top: 10px;
+}
+
+.chart-row.is-hidden {
+	display: none;
 }
 
 .right-content {
@@ -219,6 +232,10 @@ body {
 	margin: 12px 10px 10px;
 }
 
+.methodology div + div {
+	margin-top: 4px;
+}
+
 .methodology a {
 	color: var(--primary-color);
 	text-decoration: none;
@@ -236,11 +253,32 @@ body {
 	padding: 12px 14px;
 }
 
+.section-row {
+	display: flex;
+	gap: 12px;
+	margin: 14px 10px 0;
+}
+
+body.graph-hidden .section-row {
+	margin-top: 6px;
+}
+
+.section-row .section {
+	flex: 1;
+	margin: 0;
+	min-width: 0;
+}
+
+
 .section-title {
 	color: var(--secondary-color);
 	font-weight: bold;
 	font-size: 14px;
 	margin-bottom: 8px;
+}
+
+.section-row .section:last-child .section-title {
+	text-align: center;
 }
 
 .domain-list {
@@ -255,10 +293,12 @@ body {
 	align-items: center;
 	font-size: 13px;
 	color: var(--tertiary-color);
+	gap: 10px;
 }
 
 .domain-name {
-	max-width: 70%;
+	flex: 1;
+	max-width: 65%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -267,13 +307,18 @@ body {
 .domain-value {
 	color: var(--primary-color);
 	font-weight: bold;
+	white-space: nowrap;
+	text-align: right;
 }
 
 .insights-list {
 	margin: 0;
-	padding-left: 18px;
+	padding-left: 0;
 	color: var(--tertiary-color);
-	font-size: 13px;
+	font-size: 14px;
+	text-align: center;
+	font-style: italic;
+	list-style: none;
 }
 
 .toggle {

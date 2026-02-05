@@ -23,13 +23,21 @@
 					</label>
 					<button id="open-settings" class="icon-button" aria-label="Settings">
 						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-							<path d="M19.14 12.94c.04-.3.06-.62.06-.94s-.02-.64-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.03 7.03 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.58.22-1.12.52-1.62.94l-2.39-.96a.5 0 0 0-.6.22L2.81 7.84a.5 0 0 0 .12.64l2.03 1.58c-.04.3-.06.62-.06.94s.02.64.06.94l-2.03 1.58a.5 0 0 0-.12.64l1.92 3.32c.14.24.44.34.7.22l2.39-.96c.5.42 1.04.74 1.62.94l.36 2.54c.04.24.25.42.5.42h3.84c.25 0 .46-.18.5-.42l.36-2.54c.58-.22 1.12-.52 1.62-.94l2.39.96c.26.12.56.02.7-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58ZM12 15.5A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5Z"></path>
+							<path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"></path>
+							<path d="M19.4 13a7.6 7.6 0 0 0 .04-2l2-1.55a.5.5 0 0 0 .12-.64l-1.9-3.3a.5.5 0 0 0-.6-.22l-2.36.96a7.8 7.8 0 0 0-1.73-1l-.36-2.52a.5.5 0 0 0-.5-.42h-3.8a.5.5 0 0 0-.5.42l-.36 2.52a7.8 7.8 0 0 0-1.73 1l-2.36-.96a.5.5 0 0 0-.6.22l-1.9 3.3a.5.5 0 0 0 .12.64l2 1.55a7.6 7.6 0 0 0 0 2l-2 1.55a.5.5 0 0 0-.12.64l1.9 3.3c.14.24.44.34.7.22l2.36-.96a7.8 7.8 0 0 0 1.73 1l.36 2.52c.04.24.25.42.5.42h3.8c.25 0 .46-.18.5-.42l.36-2.52a7.8 7.8 0 0 0 1.73-1l2.36.96c.26.12.56.02.7-.22l1.9-3.3a.5.5 0 0 0-.12-.64L19.4 13Z"></path>
 						</svg>
 					</button>
 				</div>
 			</div>
 		</div>
 		<hr>
+
+		<div class="annual-row">
+			<div class="forecast">
+				<div class="forecast-title">Annual Estimate</div>
+				<div id="forecast-count">Not enough data...</div>
+			</div>
+		</div>
 
 		<div class="summary">
 			<div class="summary-card">
@@ -44,33 +52,24 @@
 		</div>
 
 		<div class="main-content">
-			<div class="forecast">
-				<div class="forecast-title">Annual Estimate</div>
-				<div id="forecast-count">Not enough data...</div>
-			</div>
-			<div class="chart-caption">Data for the past 30 days:</div>
+			<div class="chart-caption" id="chart-caption">Data for the past 30 days:</div>
 			<div class="chart-row">
 				<div id="chart">
 					<div id="chart-default">Not enough data yet...</div>
 				</div>
-				<button id="export-data" class="export-button">
-					<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-						<path d="M12 3a1 1 0 0 1 1 1v8.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4.01 4a1 1 0 0 1-1.38 0l-4.01-4a1 1 0 1 1 1.4-1.42l2.3 2.3V4a1 1 0 0 1 1-1Z"></path>
-						<path d="M5 14a1 1 0 0 1 1 1v2h12v-2a1 1 0 1 1 2 0v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1Z"></path>
-					</svg>
-					Export
-				</button>
 			</div>
 		</div>
 
-		<div class="section">
-			<div class="section-title">Top domains (all time)</div>
-			<div id="domain-list" class="domain-list"></div>
-		</div>
+		<div class="section-row">
+			<div class="section">
+				<div class="section-title">Top domains (all time)</div>
+				<div id="domain-list" class="domain-list"></div>
+			</div>
 
-		<div class="section">
-			<div class="section-title">Insights</div>
-			<ul id="insights-list" class="insights-list"></ul>
+			<div class="section">
+				<div class="section-title">Insights</div>
+				<ul id="insights-list" class="insights-list"></ul>
+			</div>
 		</div>
 
 		<div class="methodology">

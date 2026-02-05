@@ -116,7 +116,7 @@ function renderDomains(domains) {
     row.setAttribute("class", "domain-row");
     const name = document.createElement("div");
     name.setAttribute("class", "domain-name");
-    name.textContent = hostname;
+    name.textContent = hostname.replace(/^www\./i, "");
     const value = document.createElement("div");
     value.setAttribute("class", "domain-value");
     value.textContent = formatCarbonWeight(data.emissionsG || 0);
@@ -151,11 +151,6 @@ function generateInsights(stats, settings) {
     insights.push("Wide browsing footprint today. Fewer tabs can reduce repeated data transfers.");
   }
 
-  const topDomain = Object.entries(stats.domains || {}).sort((a, b) => b[1].emissionsG - a[1].emissionsG)[0];
-  if (topDomain) {
-    insights.push(`Top domain impact: ${topDomain[0]}. Consider lighter alternatives when available.`);
-  }
-
   if (!insights.length) {
     insights.push("Nice! Your browsing impact is staying light today.");
   }
@@ -168,7 +163,7 @@ function renderInsights(list) {
   container.innerHTML = "";
   list.forEach((item) => {
     const li = document.createElement("li");
-    li.textContent = item;
+    li.textContent = `“${item}”`;
     container.appendChild(li);
   });
 }
@@ -197,7 +192,24 @@ function renderOverview(stats, settings) {
     dayEmissions.push(day ? day.emissionsG || 0 : 0);
   }
 
-  renderChart(dayEmissions);
+  const chartRow = document.querySelector(".chart-row");
+  const chartCaption = document.getElementById("chart-caption");
+  if (settings.showGraph) {
+    document.body.classList.remove("graph-hidden");
+    if (chartRow) {
+      chartRow.classList.remove("is-hidden");
+    }
+    if (chartCaption) {
+      chartCaption.classList.remove("is-hidden");
+    }
+    renderChart(dayEmissions);
+  } else if (chartRow) {
+    document.body.classList.add("graph-hidden");
+    chartRow.classList.add("is-hidden");
+    if (chartCaption) {
+      chartCaption.classList.add("is-hidden");
+    }
+  }
 
   const annual = computeAnnualForecast(dayEmissions);
   const forecast = document.getElementById("forecast-count");
@@ -233,24 +245,6 @@ function bindControls() {
   const openSettings = document.getElementById("open-settings");
   openSettings.addEventListener("click", () => {
     chrome.runtime.openOptionsPage();
-  });
-
-  const exportButton = document.getElementById("export-data");
-  exportButton.addEventListener("click", () => {
-    chrome.storage.local.get({ stats: DEFAULT_STATS, settings: DEFAULT_SETTINGS }, (data) => {
-      const payload = {
-        exportedAt: new Date().toISOString(),
-        settings: normalizeSettings(data.settings),
-        stats: data.stats || DEFAULT_STATS
-      };
-      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const anchor = document.createElement("a");
-      anchor.href = url;
-      anchor.download = "arboria-carbon-data.json";
-      anchor.click();
-      URL.revokeObjectURL(url);
-    });
   });
 }
 

@@ -19,84 +19,80 @@
 			</div>
 		</header>
 
-		<section class="card">
-			<h2>Tracking</h2>
-			<label class="field">
-				<input type="checkbox" id="tracking-enabled" />
-				<span>Enable tracking</span>
-			</label>
-			<label class="field">
-				<input type="checkbox" id="suggestions-enabled" />
-				<span>Show insights and suggestions</span>
-			</label>
-			<label class="field">
-				<span>Retention days</span>
-				<input type="number" id="retention-days" min="7" max="365" step="1" />
-			</label>
-		</section>
-
-		<section class="card">
-			<h2>Device profile</h2>
-			<label class="field">
-				<span>Device type</span>
-				<select id="device-profile">
-					<option value="laptop">Laptop (30W)</option>
-					<option value="desktop">Desktop (75W)</option>
-					<option value="mobile">Mobile (5W)</option>
-					<option value="custom">Custom</option>
-				</select>
-			</label>
-			<label class="field" id="custom-power-field">
-				<span>Custom device power (W)</span>
-				<input type="number" id="custom-device-power" min="1" max="500" step="1" />
-			</label>
-		</section>
-
-		<section class="card">
-			<h2>Estimation model</h2>
-			<label class="field">
-				<span>Energy intensity (kWh/GB)</span>
-				<input type="number" id="energy-per-gb" min="0.1" max="5" step="0.01" />
-			</label>
-			<label class="field">
-				<span>Grid intensity (gCO2e/kWh)</span>
-				<input type="number" id="grid-intensity" min="50" max="1200" step="1" />
-			</label>
-			<label class="field">
-				<span>Cache factor</span>
-				<input type="number" id="cache-factor" min="0.1" max="1" step="0.01" />
-			</label>
-			<label class="field">
-				<span>Fallback per page (gCO2e)</span>
-				<input type="number" id="fallback-grams" min="0" max="10" step="0.01" />
-			</label>
-			<label class="field">
-				<span>Media power multiplier</span>
-				<input type="number" id="media-multiplier" min="0" max="1" step="0.05" />
-			</label>
-			<label class="field">
-				<span>Data transfer multiplier</span>
-				<input type="number" id="data-multiplier" min="0" max="0.5" step="0.05" />
-			</label>
-		</section>
-
-		<section class="card">
-			<h2>Domain intensity overrides</h2>
-			<div class="domain-editor">
-				<input type="text" id="domain-input" placeholder="example.com" />
-				<input type="number" id="domain-multiplier" min="0.1" max="3" step="0.1" placeholder="1.0" />
-				<button id="add-domain">Add / Update</button>
+		<section class="card settings-card">
+			<div class="settings-section">
+				<h2>Tracking</h2>
+				<label class="field toggle-field">
+					<span>Enable tracking</span>
+					<input type="checkbox" id="tracking-enabled" class="toggle-input" />
+					<span class="toggle-pill"></span>
+				</label>
+				<label class="field toggle-field">
+					<span>Show insights and suggestions</span>
+					<input type="checkbox" id="suggestions-enabled" class="toggle-input" />
+					<span class="toggle-pill"></span>
+				</label>
+				<label class="field toggle-field">
+					<span>Show 30-day graph</span>
+					<input type="checkbox" id="show-graph" class="toggle-input" />
+					<span class="toggle-pill"></span>
+				</label>
+				<label class="field">
+					<span>Retention days</span>
+					<select id="retention-days">
+						<option value="7">7 days</option>
+						<option value="14">14 days</option>
+						<option value="30">30 days</option>
+						<option value="45">45 days</option>
+						<option value="90">90 days</option>
+					</select>
+				</label>
 			</div>
-			<div id="domain-overrides" class="domain-list"></div>
-		</section>
 
-		<section class="card">
-			<h2>Data controls</h2>
-			<div class="button-row">
-				<button id="reset-stats">Reset tracked data</button>
-				<button id="reset-defaults">Reset defaults</button>
+			<div class="settings-section">
+				<h2>Device profile</h2>
+				<label class="field">
+					<span>Device type</span>
+					<select id="device-profile">
+						<option value="laptop">Laptop (30W)</option>
+						<option value="desktop">Desktop (75W)</option>
+						<option value="mobile">Mobile (5W)</option>
+						<option value="custom">Custom</option>
+					</select>
+				</label>
+				<label class="field" id="custom-power-field">
+					<span>Custom device power (W)</span>
+					<input type="number" id="custom-device-power" min="1" max="500" step="1" />
+				</label>
+			</div>
+
+			<div class="settings-section">
+				<h2>Data controls</h2>
+				<div class="button-row">
+					<button id="export-data" class="export-button">
+						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+							<path d="M12 3a1 1 0 0 1 1 1v8.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4.01 4a1 1 0 0 1-1.38 0l-4.01-4a1 1 0 1 1 1.4-1.42l2.3 2.3V4a1 1 0 0 1 1-1Z"></path>
+							<path d="M5 14a1 1 0 0 1 1 1v2h12v-2a1 1 0 1 1 2 0v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1Z"></path>
+						</svg>
+						Export
+					</button>
+					<button id="reset-stats">Reset tracked data</button>
+					<button id="reset-defaults">Reset defaults</button>
+				</div>
 			</div>
 		</section>
+
+		<footer class="footer">
+			<div class="footer-primary">© 2026 Arboria Research + Arboria Foundation</div>
+			<div class="footer-links">
+				<a href="https://chrisadams.io" target="_blank" rel="noreferrer">developed by chrisadams.io</a>
+				<a class="github-link" href="https://github.com/silicondaydream" target="_blank" rel="noreferrer" aria-label="GitHub">
+					<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+						<path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.69c-2.78.6-3.37-1.2-3.37-1.2-.45-1.14-1.1-1.44-1.1-1.44-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.54 2.36 1.1 2.94.84.09-.66.35-1.1.63-1.36-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.9-1.29 2.74-1.02 2.74-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.68-4.58 4.93.36.31.68.92.68 1.86v2.76c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"></path>
+					</svg>
+				</a>
+			</div>
+		</footer>
 	</div>
 </body>
 
