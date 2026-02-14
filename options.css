@@ -161,6 +161,13 @@ button:hover {
 	fill: #fff;
 }
 
+.export-status {
+	min-height: 18px;
+	margin-top: 8px;
+	color: rgba(42, 35, 15, 0.75);
+	font-size: 13px;
+}
+
 .settings-card {
 	display: flex;
 	flex-direction: column;

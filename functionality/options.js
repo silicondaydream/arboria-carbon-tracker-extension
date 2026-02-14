@@ -4,8 +4,58 @@ function saveSettings() {
   chrome.storage.local.set({ settings: currentSettings });
 }
 
-function exportData() {
-  chrome.storage.local.get({ stats: DEFAULT_STATS, settings: DEFAULT_SETTINGS }, (data) => {
+function setExportStatus(message) {
+  const status = document.getElementById("export-status");
+  if (!status) {
+    return;
+  }
+  status.textContent = message || "";
+}
+
+function getStoragePayload() {
+  return new Promise((resolve) => {
+    chrome.storage.local.get({ stats: DEFAULT_STATS, settings: DEFAULT_SETTINGS }, (data) => {
+      resolve(data);
+    });
+  });
+}
+
+function triggerDownload(url, filename) {
+  if (chrome.downloads && chrome.downloads.download) {
+    return new Promise((resolve, reject) => {
+      chrome.downloads.download({ url, filename, saveAs: true }, (downloadId) => {
+        if (chrome.runtime.lastError || !downloadId) {
+          reject(
+            chrome.runtime.lastError
+              ? new Error(chrome.runtime.lastError.message)
+              : new Error("Unable to start download.")
+          );
+          return;
+        }
+        resolve(downloadId);
+      });
+    });
+  }
+
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  anchor.rel = "noopener";
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  return Promise.resolve();
+}
+
+async function exportData() {
+  const exportButton = document.getElementById("export-data");
+  if (exportButton) {
+    exportButton.disabled = true;
+  }
+  setExportStatus("Preparing JSON export...");
+
+  try {
+    const data = await getStoragePayload();
     const payload = {
       exportedAt: new Date().toISOString(),
       settings: normalizeSettings(data.settings),
@@ -13,12 +63,18 @@ function exportData() {
     };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = "arboria-carbon-data.json";
-    anchor.click();
-    URL.revokeObjectURL(url);
-  });
+
+    await triggerDownload(url, "arboria-carbon-data.json");
+    setExportStatus("Export ready. Check your downloads.");
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
+  } catch (error) {
+    console.error("Export failed:", error);
+    setExportStatus("Export failed. Please try again.");
+  } finally {
+    if (exportButton) {
+      exportButton.disabled = false;
+    }
+  }
 }
 
 function setFieldValue(id, value) {
