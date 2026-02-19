@@ -149,25 +149,6 @@ button:hover {
 	flex-wrap: wrap;
 }
 
-.export-button {
-	display: inline-flex;
-	align-items: center;
-	gap: 6px;
-}
-
-.export-button svg {
-	width: 16px;
-	height: 16px;
-	fill: #fff;
-}
-
-.export-status {
-	min-height: 18px;
-	margin-top: 8px;
-	color: rgba(42, 35, 15, 0.75);
-	font-size: 13px;
-}
-
 .settings-card {
 	display: flex;
 	flex-direction: column;

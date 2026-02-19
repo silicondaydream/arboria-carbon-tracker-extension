@@ -19,7 +19,7 @@ The environmental impact of our online activities is considerable, with each web
 - Network response header sampling when available (content-length).
 - Per-domain aggregation and insights.
 - Local-only insights engine with plain-language suggestions.
-- Customizable estimation settings and exportable data.
+- Customizable estimation settings.
 
 
 

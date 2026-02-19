@@ -350,8 +350,7 @@ body.graph-hidden .section-row {
 	gap: 8px;
 }
 
-.action-buttons button,
-.export-button {
+.action-buttons button {
 	background: var(--primary-color);
 	border: none;
 	border-radius: 8px;
@@ -368,8 +367,7 @@ body.graph-hidden .section-row {
 	padding: 0;
 }
 
-.action-buttons button:hover,
-.export-button:hover {
+.action-buttons button:hover {
 	background: var(--secondary-color);
 }
 
@@ -393,24 +391,6 @@ body.graph-hidden .section-row {
 
 .action-buttons .icon-button:hover {
 	background: transparent;
-}
-
-.export-button {
-	display: inline-flex;
-	align-items: center;
-	gap: 6px;
-}
-
-.export-button svg {
-	width: 16px;
-	height: 16px;
-	fill: #fff;
-}
-
-.chart-row .export-button {
-	padding: 4px 10px;
-	font-size: 11px;
-	margin-bottom: 2px;
 }
 
 .toggle[data-tooltip]::after {
